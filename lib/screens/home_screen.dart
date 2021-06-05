@@ -10,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   Channel _channel;
   bool _isLoading = false;
 
@@ -117,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 video.title,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   decoration: TextDecoration.none,
                 ),
               ),
@@ -131,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
   _loadMoreVideos() async {
     _isLoading = true;
     List<Video> moreVideos = await APIService.instance
-        .fetchVideosFromPlaylist(playlistId: _channel.uploadPlaylistId);
+        .fetchVideosFromPlaylist(playlistId: 'PLDUJpsQ2QKl28MqVNVuf8UEv-Uq078Gr9');
     List<Video> allVideos = _channel.videos..addAll(moreVideos);
     setState(() {
       _channel.videos = allVideos;

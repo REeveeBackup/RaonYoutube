@@ -28,7 +28,9 @@ class _VideoScreenState extends State<VideoScreen> {
       flags: YoutubePlayerFlags(
         mute: false,
         autoPlay: true,
-      ),
+        forceHD: true,
+        loop: true,
+      enableCaption: false),
     );
     _initChannel();
   }
@@ -41,7 +43,12 @@ class _VideoScreenState extends State<VideoScreen> {
       _channel = channel;
     });
   }
-
+  bool oynat = false;
+  void oyna()
+  {
+    oynat = !oynat;
+    return oynat;
+  }
   _buildVideo(Video video) {
     return GestureDetector(
       onTap: () =>
@@ -78,7 +85,7 @@ class _VideoScreenState extends State<VideoScreen> {
                 style: TextStyle(
                   color: Colors.white,
                   decoration: TextDecoration.none,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                 ),
               ),
             ),
@@ -91,7 +98,7 @@ class _VideoScreenState extends State<VideoScreen> {
   _loadMoreVideos() async {
     _isLoading = true;
     List<Video> moreVideos = await APIService.instance
-        .fetchVideosFromPlaylist(playlistId: _channel.uploadPlaylistId);
+        .fetchVideosFromPlaylist(playlistId: 'PLDUJpsQ2QKl28MqVNVuf8UEv-Uq078Gr9');
     List<Video> allVideos = _channel.videos..addAll(moreVideos);
     setState(() {
       _channel.videos = allVideos;
@@ -99,21 +106,10 @@ class _VideoScreenState extends State<VideoScreen> {
     _isLoading = false;
   }
 
-  _buildProfileInfo() {
-    return Container(
-      color: Colors.purple.withOpacity(0),
-      child: YoutubePlayer(
-          controller: _controller,
-          showVideoProgressIndicator: true),
-          );
-  }
+
   IndexedWidgetBuilder itemBuilder;
   Widget build(BuildContext context) {
     return Stack(children: [
-  /*  _buildProfileInfo(),
-    YoutubePlayer(
-    controller: _controller,
-    showVideoProgressIndicator: true),*/
      Container(color: Colors.black,
        margin: EdgeInsets.all(20.0),
        padding: EdgeInsets.all(20.0),
@@ -126,7 +122,15 @@ class _VideoScreenState extends State<VideoScreen> {
               itemCount: 1 + _channel.videos.length,
               itemBuilder: (BuildContext context, int index) {
                 if (index == 0) {
-                  return _buildProfileInfo();
+                  return Container(
+                    color: Colors.purple.withOpacity(0),
+                    child: YoutubePlayer(
+                        controller: _controller,
+                        showVideoProgressIndicator: true,
+                        onEnded: ,
+                        ),
+
+                  );
                 }
                 Video video = _channel.videos[index - 1];
                 return _buildVideo(video);

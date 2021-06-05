@@ -36,14 +36,14 @@ class APIService {
 
       // Fetch first batch of videos from uploads playlist
       channel.videos = await fetchVideosFromPlaylist(
-        playlistId: 'PLsOs4PXXz9yGo9W5ymlZeHT8Rrg2kktfz',
+        playlistId: 'PLDUJpsQ2QKl28MqVNVuf8UEv-Uq078Gr9',
       );
       return channel;
     } else {
       throw json.decode(response.body)['error']['message'];
     }
   }
-
+  
   Future<List<Video>> fetchVideosFromPlaylist({String playlistId}) async {
     Map<String, String> parameters = {
       'part': 'snippet',
