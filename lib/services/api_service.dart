@@ -17,7 +17,7 @@ class APIService {
     Map<String, String> parameters = {
       'part': 'snippet, contentDetails, statistics',
       'id': channelId,
-      'key': 'AIzaSyD33iahF_Lq5cjyWZ7KBU6O7ofcyJ0gHsg',
+      'key': 'API_KEY',
     };
     Uri uri = Uri.https(
       _baseUrl,
@@ -50,7 +50,7 @@ class APIService {
       'playlistId': playlistId,
       'maxResults': '10',
       'pageToken': _nextPageToken,
-      'key': 'AIzaSyD33iahF_Lq5cjyWZ7KBU6O7ofcyJ0gHsg',
+      'key': 'API_KEY',
     };
     Uri uri = Uri.https(
       _baseUrl,
