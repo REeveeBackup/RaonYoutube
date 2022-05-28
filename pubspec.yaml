@@ -32,6 +32,10 @@ dependencies:
   youtube_player_flutter: ^8.0.0
   cached_network_image: ^3.0.0
   flutter_launcher_icons: ^0.9.0
+  get: ^4.6.1
+  flappy_search_bar: ^1.7.2
+
+  
 
 
 flutter_icons:
@@ -44,6 +48,9 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  json_model: ^1.0.0
+  json_serializable: ^6.2.0
+  build_runner: ^2.1.11  
 
 
 flutter:

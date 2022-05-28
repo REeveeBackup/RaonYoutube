@@ -44,7 +44,7 @@ class _VideoScreenState extends State<VideoScreen> {
     });
   }
   bool oynat = false;
-  void oyna()
+  bool oyna()
   {
     oynat = !oynat;
     return oynat;
@@ -74,7 +74,7 @@ class _VideoScreenState extends State<VideoScreen> {
         ),
         child: Row(
           children: <Widget>[
-            Image(
+           Image(
               width: 150.0,
               image: NetworkImage(video.thumbnailUrl),
             ),
@@ -98,10 +98,11 @@ class _VideoScreenState extends State<VideoScreen> {
   _loadMoreVideos() async {
     _isLoading = true;
     List<Video> moreVideos = await APIService.instance
-        .fetchVideosFromPlaylist(playlistId: 'PLDUJpsQ2QKl28MqVNVuf8UEv-Uq078Gr9');
+        .fetchVideosFromPlaylist(playlistId:'PLsOs4PXXz9yGo9W5ymlZeHT8Rrg2kktfz', searchVideo: ''); //PLsOs4PXXz9yGo9W5ymlZeHT8Rrg2kktfz
     List<Video> allVideos = _channel.videos..addAll(moreVideos);
     setState(() {
       _channel.videos = allVideos;
+
     });
     _isLoading = false;
   }
@@ -127,7 +128,6 @@ class _VideoScreenState extends State<VideoScreen> {
                     child: YoutubePlayer(
                         controller: _controller,
                         showVideoProgressIndicator: true,
-                        onEnded: ,
                         ),
 
                   );

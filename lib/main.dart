@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
       title: 'RaonTube',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.black,
+        appBarTheme: AppBarTheme(
+        color: Colors.black),
+        scaffoldBackgroundColor:Colors.black,
       ),
       home: HomeScreen(),
     );

@@ -13,13 +13,26 @@ class Video {
     this.playlistTitle,
   });
 
-  factory Video.fromMap(Map<String, dynamic> snippet) {
-    return Video(
-      id: snippet['resourceId']['videoId'],
-      title: snippet['title'],
-      thumbnailUrl: snippet['thumbnails']['high']['url'],
-      channelTitle: snippet['channelTitle'],
-      playlistTitle: snippet['playlistTitle']
+  factory Video.fromMap(Map<String, dynamic> id, bool i) {
+    if(i == true)
+    {
+      return Video(
+      id: id['id']['videoId'],
+      title: id['snippet']['title'],
+      thumbnailUrl: id['snippet']['thumbnails']['high']['url'],
+      channelTitle: id['snippet']['channelTitle'],
+      playlistTitle: id['snippet']['playlistTitle']
     );
+    }
+    if(i == false)
+    {
+      return Video(
+      id: id['resourceId']['videoId'],
+      title: id['title'],
+      thumbnailUrl: id['thumbnails']['medium']['url'],
+      channelTitle: id['channelTitle'],
+      playlistTitle: id['playlistTitle']
+      );
+    }
   }
 }
